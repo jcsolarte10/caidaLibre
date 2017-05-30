@@ -1,0 +1,29 @@
+x0 = 10
+v0 = 0
+a0 = -9.81
+tm= 300
+dt=0.1
+
+t=0
+x=x0
+v=v0
+a=a0
+while t<tm:
+    v=-v;
+    ts = (-v-(v**2-2*a*x)**0.5)/a
+
+    if ts<=0:
+        ts = (-v+(v**2-2*a*x)**0.5)/a
+
+    if t+ts > tm:
+        ts= tm-t
+
+    n = int(ts/dt)
+
+    for i in range(n):
+        x = x + v*dt + 0.5 * a *dt**2
+        v = v + a * dt
+        t = t + dt
+
+        print(str(t) + ',' + str(x))
+        
